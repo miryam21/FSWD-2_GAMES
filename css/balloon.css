@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('../images/BalloonBackground.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#scoreboard {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+
+.balloon-area {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+}
+
+.balloon {
+    position: absolute;
+    width: 120px;
+    height: 150px;
+    background: url('../images/Balloon.png') no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.5s;
+    animation: changeColor 3s infinite;
+}
+
+.balloon:active {
+    transform: scale(1.1);
+}
+
+.exploding-balloon {
+    background: url('../images/explosion.png') no-repeat center center;
+    background-size: contain;
+    transform: scale(1.5);
+    transition: transform 0.3s ease;
+}
+
+@keyframes changeColor {
+    0% { filter: hue-rotate(0deg); }
+    50% { filter: hue-rotate(180deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+#game-over-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 300px;
+    background: url('../images/game_over.png') no-repeat center center;
+    background-size: cover;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    border-radius: 10px;
+    border: 2px solid black;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.popup-content h1 {
+    font-size: 36px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.popup-content p {
+    font-size: 18px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.popup-content button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #8fc7ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup-content button:hover {
+    background-color: #6ba9e0;
+}
