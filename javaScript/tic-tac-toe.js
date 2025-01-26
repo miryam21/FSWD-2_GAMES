@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let gameActive = true; // האם המשחק פעיל
 
     // פונקציה לבדוק אם יש מנצח
+    // בלה
     const checkWin = () => {
         const winPatterns = [
             [0, 1, 2], [3, 4, 5], [6, 7, 8], // שורות
@@ -46,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // פונקציה לאיפוס המשחק
+    // פונקציה לאיפוס המשחק  
     const resetGame = () => {
         board = ["", "", "", "", "", "", "", "", ""]; // מאפסים את הלוח
         gameActive = true;
