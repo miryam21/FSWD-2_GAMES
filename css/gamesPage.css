@@ -54,11 +54,10 @@
     top: 45%;
     left: 50%;
     width: 180px;
+    height: 30px;
     transform: translate(-50%, -50%); /* ממקם את הכיתוב במרכז */
     background: rgba(0, 0, 0, 0.6); /* רקע שחור שקוף */
     color: white;
-    padding: 10px 15px;
     font-size: 1.2rem;
     font-weight: bold;
-    text-transform: uppercase;
 }
