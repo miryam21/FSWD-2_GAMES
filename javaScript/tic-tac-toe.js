@@ -1,63 +1,131 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const cells = document.querySelectorAll(".cell"); // כל התאים של הלוח
-    const statusText = document.getElementById("status"); // האלמנט שמציג את תור המשחק
-    const resetButton = document.getElementById("reset"); // כפתור האיפוס
-    let board = ["", "", "", "", "", "", "", "", ""]; // מצב הלוח
-    let currentPlayer = "X"; // מי מתחיל
-    let gameActive = true; // האם המשחק פעיל
+// משתנים למשחק
+const board = ["", "", "", "", "", "", "", "", ""];
+let gameActive = true;
+let currentPlayer = "X"; // השחקן תמיד משחק כ-X
 
-    // פונקציה לבדוק אם יש מנצח
-    // בלה
-    const checkWin = () => {
-        const winPatterns = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8], // שורות
-            [0, 3, 6], [1, 4, 7], [2, 5, 8], // עמודות
-            [0, 4, 8], [2, 4, 6]             // אלכסונים
-        ];
+// מזהים את כל התאים
+const cells = document.querySelectorAll(".cell");
+const statusDisplay = document.getElementById("status");
+const resetButton = document.getElementById("reset");
 
-        for (let pattern of winPatterns) {
-            const [a, b, c] = pattern;
-            if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-                gameActive = false;
-                statusText.textContent = `המשחק נגמר! המנצח: ${board[a]}`;
-                return;
+// מאזינים ללחיצה על כל תא
+cells.forEach(cell => {
+    cell.addEventListener("click", handleCellClick);
+});
+
+function handleCellClick(event) {
+    const cell = event.target;
+    const cellIndex = cell.getAttribute("data-index");
+
+    if (board[cellIndex] !== "" || !gameActive) return;
+
+    board[cellIndex] = "X";
+    cell.textContent = "X";
+
+    if (checkWinner("X")) {
+        statusDisplay.textContent = "🎉 השחקן ניצח!";
+        gameActive = false;
+        return;
+    }
+
+    if (!board.includes("")) {
+        statusDisplay.textContent = "🤝 תיקו!";
+        gameActive = false;
+        return;
+    }
+
+    // עדכון תור למחשב
+    currentPlayer = "O";
+    updateTurnIndicator(); 
+
+    setTimeout(computerMove, 500);
+}
+
+
+// פונקציה שמבצעת את התור של המחשב (O)
+function computerMove() {
+    if (!gameActive) return;
+
+    const bestMove = findBestMove();
+    board[bestMove] = "O";
+    cells[bestMove].textContent = "O";
+
+    if (checkWinner("O")) {
+        statusDisplay.textContent = "💻 המחשב ניצח!";
+        gameActive = false;
+        return;
+    }
+
+    if (!board.includes("")) {
+        statusDisplay.textContent = "🤝 תיקו!";
+        gameActive = false;
+        return;
+    }
+
+    // עדכון תור חזרה לשחקן
+    currentPlayer = "X";
+    updateTurnIndicator();
+}
+
+// פונקציה למציאת מהלך רנדומלי
+function getRandomMove() {
+    let availableMoves = board.map((val, index) => val === "" ? index : null).filter(val => val !== null);
+    return availableMoves[Math.floor(Math.random() * availableMoves.length)];
+}
+
+// פונקציה למציאת המהלך החכם של המחשב
+function findBestMove() {
+    // 1. בדיקה אם המחשב יכול לנצח
+    for (let i = 0; i < board.length; i++) {
+        if (board[i] === "") {
+            board[i] = "O";
+            if (checkWinner("O")) {
+                board[i] = "";
+                return i;
             }
+            board[i] = "";
         }
+    }
 
-        // אם כל התאים מלאים ואין מנצח – תיקו
-        if (!board.includes("")) {
-            gameActive = false;
-            statusText.textContent = "תיקו!";
+    // 2. חסימת ניצחון של השחקן
+    for (let i = 0; i < board.length; i++) {
+        if (board[i] === "") {
+            board[i] = "X";
+            if (checkWinner("X")) {
+                board[i] = "";
+                return i;
+            }
+            board[i] = "";
         }
-    };
+    }
 
-    // פונקציה שמטפלת בלחיצה על תא
-    const handleClick = (e) => {
-        const index = e.target.dataset.index;
-        if (!gameActive || board[index] !== "") return; // אם המשחק נגמר או שהתא תפוס - לא עושים כלום
+    // 3. אם אין מהלך מיידי לניצחון או חסימה, לבחור רנדומלית משבצת פנויה
+    return getRandomMove();
+}
 
-        board[index] = currentPlayer;
-        e.target.textContent = currentPlayer;
-        checkWin(); // בדיקה אם יש מנצח
+// פונקציה לבדיקה אם יש מנצח
+function checkWinner(player) {
+    const winPatterns = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8], // שורות
+        [0, 3, 6], [1, 4, 7], [2, 5, 8], // עמודות
+        [0, 4, 8], [2, 4, 6]  // אלכסונים
+    ];
 
-        // מעבירים תור לשחקן הבא
-        currentPlayer = currentPlayer === "X" ? "O" : "X";
-        if (gameActive) {
-            statusText.textContent = `תור נוכחי: ${currentPlayer}`;
-        }
-    };
+    return winPatterns.some(pattern => {
+        return pattern.every(index => board[index] === player);
+    });
+}
 
-    // פונקציה לאיפוס המשחק  
-    const resetGame = () => {
-        board = ["", "", "", "", "", "", "", "", ""]; // מאפסים את הלוח
-        gameActive = true;
-        currentPlayer = "X";
-        statusText.textContent = "תור נוכחי: X";
-        cells.forEach(cell => cell.textContent = ""); // מוחקים את ה-X וה-O מהלוח
-    };
+function updateTurnIndicator() {
+    statusDisplay.textContent = `תור נוכחי: ${currentPlayer === "X" ? "שחקן" : "מחשב"}`;
+}
 
-    // מאזינים ללחיצה על כל תא
-    cells.forEach(cell => cell.addEventListener("click", handleClick));
-    // מאזינים ללחיצה על כפתור האיפוס
-    resetButton.addEventListener("click", resetGame);
+
+// פונקציה לאיפוס המשחק
+resetButton.addEventListener("click", () => {
+    board.fill("");
+    gameActive = true;
+    currentPlayer = "X";
+    statusDisplay.textContent = "תור נוכחי: X";
+    cells.forEach(cell => cell.textContent = "");
 });

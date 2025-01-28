@@ -3,6 +3,7 @@ body {
     color: #2c3e50;
     font-family: "Arial", sans-serif;
     text-align: center;
+    min-height: 100vh;
 }
 
 
@@ -58,16 +59,19 @@ body {
     margin: 2% ;
 }
 
-#reset {
-    padding: 10px 15px;
-    font-size: 1rem;
-    cursor: pointer;
-    border: none;
-    background-color: #3498db;
-    color: white;
-    border-radius: 5px;
+.reset-icon {
+    font-size: 2rem; /* גודל האייקון */
+    color: #3498db; /* צבע כחול בהיר שמתאים לעיצוב */
+    cursor: pointer; /* משנה את הסמן ליד שמראה שאפשר ללחוץ */
+    transition: 0.3s ease-in-out;
+    margin: 20px auto; /* ממקם את האייקון במרכז */
 }
 
-#reset:hover {
-    background-color: #2980b9;
+.reset-icon:hover {
+    color: #2980b9; /* צבע כהה יותר בעת ריחוף */
+    transform: rotate(360deg); /* אנימציה של סיבוב */
 }
+
+
+
+
