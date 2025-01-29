@@ -2,8 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const balloonArea = document.getElementById('balloonArea');
     const scoreElement = document.getElementById('score');
 
+    
     const gameOverPopup = document.createElement('div'); // יצירת אלמנט פופאפ לסיום המשחק
+    const highScoreElement = document.getElementById('highScore'); // תצוגת שיא אישי
     let score = 0;
+    let highScore = 0; // ברירת מחדל אם אין שיא אישי
+
     let gameStarted = false; // משתנה לבדיקה אם המשחק התחיל
     let gameOver = false; // משתנה לבדיקה אם המשחק נגמר
     let balloonSpeed = 20; // מהירות התחלתית
@@ -73,16 +77,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // פונקציה לעדכון הניקוד על המסך
-    function updateScore() {
-        scoreElement.textContent = score;
+ // פונקציה לעדכון הניקוד ושמירת שיא אישי
+function updateScore() {
+    scoreElement.textContent = score;
+
+    // אם השחקן שבר שיא אישי
+    if (score > highScore) {
+        highScore = score;
+        highScoreElement.textContent = highScore;
+        saveHighScore(highScore);
     }
+}
+// פונקציה לשמירת השיא האישי ב-LocalStorage
+function saveHighScore(highScore) {
+    if (!loggedInUser) return;
+
+    let userScores = JSON.parse(localStorage.getItem("userScores")) || {};
+    userScores[loggedInUser] = highScore;
+    localStorage.setItem("userScores", JSON.stringify(userScores));
+}
 
     // פונקציה לסיום המשחק
     function endGame() {
         gameOver = true; // עדכון מצב המשחק
         document.getElementById('final-score').textContent = score; // עדכון הניקוד בפופאפ
         gameOverPopup.style.display = 'flex'; // הצגת הפופאפ
+    // שמירת שיא אישי אם השחקן עבר את הקודם
+     if (score > highScore) {
+        highScore = score;
+        saveHighScore(highScore);
+     }
 
         // האזנה ללחיצה על כפתור Restart
         const restartButton = document.getElementById('restart-button');
