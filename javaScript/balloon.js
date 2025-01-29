@@ -64,13 +64,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 balloon.remove(); // הסרה אחרי האפקט
             }, 300); // זמן מתאים לאנימציה
             score += 10; // עדכון ניקוד
-            scoreElement.textContent = score;
+            updateScore(); // עדכון הניקוד על המסך
 
             // בדיקה להעלאת רמת קושי
             if (score % 100 === 0) {
                 increaseDifficulty();
             }
         });
+    }
+
+    // פונקציה לעדכון הניקוד על המסך
+    function updateScore() {
+        scoreElement.textContent = score;
     }
 
     // פונקציה לסיום המשחק
@@ -99,5 +104,5 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         gameStarted = true; // מסמן שהמשחק התחיל
         addBalloonInterval = setInterval(addBalloon, balloonInterval); // הוספת בלונים כל שנייה
-    }, 2000); // התחלה אחרי 2 שניות
+    }, 1000); // התחלה אחרי 1 שניות
 });
