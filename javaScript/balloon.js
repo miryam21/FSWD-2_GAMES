@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const balloonArea = document.getElementById('balloonArea');
     const scoreElement = document.getElementById('score');
-
+    const loggedInUser = localStorage.getItem('loggedInUser')
+    
     
     const gameOverPopup = document.createElement('div'); // יצירת אלמנט פופאפ לסיום המשחק
     const highScoreElement = document.getElementById('highScore'); // תצוגת שיא אישי
@@ -89,12 +90,14 @@ function updateScore() {
     }
 }
 // פונקציה לשמירת השיא האישי ב-LocalStorage
-function saveHighScore(highScore) {
+function saveHighScore(highScore) {       
     if (!loggedInUser) return;
 
-    let userScores = JSON.parse(localStorage.getItem("userScores")) || {};
-    userScores[loggedInUser] = highScore;
-    localStorage.setItem("userScores", JSON.stringify(userScores));
+    let userScores = JSON.parse(localStorage.getItem("users"));
+    let currentUserIndex = userScores.findIndex(x=>x.username == loggedInUser)
+    userScores[currentUserIndex].maxScoreBaloon = highScore;
+    localStorage.setItem("users", JSON.stringify(userScores));
+    
 }
 
     // פונקציה לסיום המשחק

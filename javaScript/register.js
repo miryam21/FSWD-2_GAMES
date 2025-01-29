@@ -26,7 +26,9 @@ function registerUser(event) {
     const user = {
         username: username,
         email: email,
-        password: password // הערה: בעולם אמיתי יש לשמור סיסמאות בפורמט מוצפן (hash)
+        password: password, // הערה: בעולם אמיתי יש לשמור סיסמאות בפורמט מוצפן (hash)
+        maxScoreBaloon: 0,
+        maxScoreXO: 0
     };
     console.log("משתמש נרשם:", user);
 

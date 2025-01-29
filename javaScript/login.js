@@ -12,11 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // שליפת המשתמשים מ- localStorage
-        const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+        const existingUsers = JSON.parse(localStorage.getItem("users"));
 
-        // חיפוש המשתמש לפי שם משתמש וסיסמה
-        const user = existingUsers.find(user => user.name === username && user.password === password);
-
+        // חיפוש המשתמש לפי שם משתמש וסיסמה       
+        const user = existingUsers.find(user => user.username === username && user.password === password);
+        
         if (user) {
             alert("התחברת בהצלחה!");
 
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setCookie("loginAttempts", 0, 1);
 
             // שמירת שם המשתמש המחובר ב-LocalStorage
-            localStorage.setItem("loggedInUser", user.name);
+            localStorage.setItem("loggedInUser", username);
 
             // מעבר לעמוד המשחקים
             window.location.href = "gamesPage.html";

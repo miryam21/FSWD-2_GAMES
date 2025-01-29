@@ -3,6 +3,8 @@ const board = ["", "", "", "", "", "", "", "", ""];
 let gameActive = true;
 let currentPlayer = "X"; // השחקן תמיד משחק כ-X
 
+const loggedInUser = localStorage.getItem('loggedInUser')
+
 // מזהים את כל התאים
 const cells = document.querySelectorAll(".cell");
 const statusDisplay = document.getElementById("status");
@@ -12,6 +14,16 @@ const resetButton = document.getElementById("reset");
 cells.forEach(cell => {
     cell.addEventListener("click", handleCellClick);
 });
+
+function updateUserScore() {       
+    if (!loggedInUser) return;
+
+    let userScores = JSON.parse(localStorage.getItem("users"));
+    let currentUserIndex = userScores.findIndex(x=>x.username == loggedInUser)
+    userScores[currentUserIndex].maxScoreXO += 1;
+    localStorage.setItem("users", JSON.stringify(userScores));
+    
+}
 
 function handleCellClick(event) {
     const cell = event.target;
@@ -24,6 +36,7 @@ function handleCellClick(event) {
 
     if (checkWinner("X")) {
         statusDisplay.textContent = "🎉 השחקן ניצח!";
+        updateUserScore();
         gameActive = false;
         return;
     }
