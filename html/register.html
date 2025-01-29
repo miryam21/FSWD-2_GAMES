@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Registration</title>
-
-    <!-- קישור לקובץ ה-CSS לעיצוב הדף -->
-    <link href="../css/register.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../css/register.css"> 
 </head>
-
 <body>
-    <!-- טופס הרישום -->
     <form id="registrationForm">
-        <label for="username">Full Name:</label>
+        <h2>Register</h2>
+        <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
-
-        <label for="phone">Phone:</label>
-        <input type="tel" id="phone" name="phone" required>
 
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
@@ -28,12 +21,10 @@
         <label for="confirmPassword">Confirm Password:</label>
         <input type="password" id="confirmPassword" name="confirmPassword" required>
 
-        <!-- כפתור לשליחת הנתונים -->
         <button type="submit">Register</button>
+        <p>Already have an account? <a href="login.html">Login here</a></p>
     </form>
 
-    <!-- קישור לקובץ ה-JS שיטפל בלוגיקה של הרישום -->
-    <script src="../javaScript/register.js" type="text/javascript" defer></script>
+    <script src="../javaScript/register.js" defer></script> 
 </body>
-
 </html>
