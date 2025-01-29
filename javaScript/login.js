@@ -57,7 +57,8 @@ function isUserBlocked() {
 function setCookie(name, value, minutes) {
     let date = new Date();
     date.setTime(date.getTime() + (minutes * 60 * 1000));
-    document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
+    document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/; SameSite=Lax; Secure`;
+    console.log(`Cookie set: ${name}=${value}`);
 }
 
 // פונקציה לקריאת ערך Cookie
@@ -66,8 +67,10 @@ function getCookie(name) {
     for (let i = 0; i < cookies.length; i++) {
         let cookiePair = cookies[i].split('=');
         if (cookiePair[0] === name) {
+            console.log(`Cookie found: ${name}=${cookiePair[1]}`);
             return cookiePair[1];
         }
     }
+    console.log(`Cookie not found: ${name}`);
     return null;
 }
