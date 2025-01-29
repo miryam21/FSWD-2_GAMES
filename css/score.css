@@ -1,5 +1,7 @@
 
-
+p{
+  direction: rtl;  
+}
 
 .user-card {
     background: white;

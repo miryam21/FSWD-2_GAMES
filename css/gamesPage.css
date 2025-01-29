@@ -61,3 +61,24 @@
     font-size: 1.2rem;
     font-weight: bold;
 }
+
+.games-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    gap: 30px; /* רווח בין הכותרת לאייקון */
+}
+
+.trophy-icon {
+    font-size: 1.8rem; /* גודל האייקון */
+    color: gold; /* צבע הגביע */
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.trophy-icon:hover {
+    color: orange; /* שינוי צבע בעת ריחוף */
+    transform: scale(1.2); /* אפקט הגדלה */
+}
+
