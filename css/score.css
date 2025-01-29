@@ -5,27 +5,52 @@ p{
 
 .user-card {
     background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    width: 50%;
+    margin: 20px auto;
+    
+}
+
+/* עיצוב תצוגת ההישגים */
+.achievements-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+.achievement {
+    background: white;
     padding: 15px;
     border-radius: 10px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-    width: 300px;
-    margin: 20px auto;
+    width: 240px;
     text-align: center;
 }
 
+.achievement img {
+    width: 100%; /* התמונה תתאים לרוחב הקוביה */
+    height: 120px; /* גובה קבוע לתמונות */
+    object-fit: cover; /* חיתוך החלקים הלא מתאימים כדי לשמור על יחס הגובה-רוחב */
+    border-radius: 10px; /* עיגול קל של התמונה */
+    margin-bottom: 10px; /
+    
 
-button {
-    margin-top: 20px;
+}
+.back-button {
+    display: block;
+    margin: 50px auto 20px auto; /* מגדיל את הרווח העליון */
     padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
     background: #3498db;
     color: white;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
 }
 
-button:hover {
+.back-button:hover {
     background: #2980b9;
 }

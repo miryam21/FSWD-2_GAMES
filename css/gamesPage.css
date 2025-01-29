@@ -70,15 +70,25 @@
     gap: 30px; /* רווח בין הכותרת לאייקון */
 }
 
+.header-container {
+    display: flex;
+    align-items: center; /* מיישר את כל האלמנטים לאותו קו אופקי */
+    justify-content: center; /* ממקם הכל באמצע */
+    gap: 20px; /* רווח בין הכיתוב, הכותרת והגביע */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-top: 20px;
+}
+
 .trophy-icon {
-    font-size: 1.8rem; /* גודל האייקון */
-    color: gold; /* צבע הגביע */
+    font-size: 1.8rem;
+    color: gold;
     transition: 0.3s;
     text-decoration: none;
 }
 
 .trophy-icon:hover {
-    color: orange; /* שינוי צבע בעת ריחוף */
-    transform: scale(1.2); /* אפקט הגדלה */
+    color: orange;
+    transform: scale(1.2);
 }
-

@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const user = users[users.length - 1];
 
         // הצגת הנתונים בעמוד
-        document.getElementById("userName").textContent = user.name || "לא ידוע";
+        document.getElementById("userName").textContent = user.username || "לא ידוע";
         document.getElementById("userEmail").textContent = user.email || "לא ידוע";
 
         // בדיקה אם יש נתוני ניצחונות
