@@ -1,11 +1,18 @@
 body {
-    background: linear-gradient(to bottom, #dde1e7, #a6aebd); /* רקע מדורג */
-    color: #2c3e50;
     font-family: "Arial", sans-serif;
     text-align: center;
     min-height: 100vh;
+    background-image: url("../images/xoBackground.jpg"); /* הנתיב לתמונה */
+    background-size: cover; /* התאמה למסך */
+    background-position: center; /* מיקום במרכז */
+    background-attachment: fixed; /* קיבוע הרקע */
+    background-repeat: no-repeat; /* ללא חזרה */
 }
 
+h1{
+ color: #2c3e50; /* צבע כהה למראה אלגנטי */
+
+}
 
 .game-container {
     display: flex;
