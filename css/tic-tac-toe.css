@@ -2,15 +2,15 @@ body {
     font-family: "Arial", sans-serif;
     text-align: center;
     min-height: 100vh;
-    background-image: url("../images/xoBackground.jpg"); /* הנתיב לתמונה */
-    background-size: cover; /* התאמה למסך */
-    background-position: center; /* מיקום במרכז */
-    background-attachment: fixed; /* קיבוע הרקע */
-    background-repeat: no-repeat; /* ללא חזרה */
+    background-image: url("../images/xoBackground.jpg"); 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed; 
+    background-repeat: no-repeat; 
 }
 
 h1{
- color: #2c3e50; /* צבע כהה למראה אלגנטי */
+ color: #2c3e50;
 
 }
 
@@ -46,8 +46,8 @@ h1{
 }
 
 .cell:hover {
-    background: #f0f0f0; /* אפקט ריחוף */
-    transform: scale(1.05); /* הגדלה קלה */
+    background: #f0f0f0; 
+    transform: scale(1.05); 
 }
 
 
@@ -61,22 +61,22 @@ h1{
     direction: rtl;
     text-align: right;
     font-size: 1.5rem;
-    font-weight: bold; /* הפיכת הטקסט למודגש */
-    color: #2c3e50; /* צבע כהה למראה אלגנטי */
+    font-weight: bold; 
+    color: #2c3e50;
     margin: 2% ;
 }
 
 .reset-icon {
-    font-size: 2rem; /* גודל האייקון */
-    color: #3498db; /* צבע כחול בהיר שמתאים לעיצוב */
-    cursor: pointer; /* משנה את הסמן ליד שמראה שאפשר ללחוץ */
+    font-size: 2rem; 
+    color: #3498db; 
+    cursor: pointer;
     transition: 0.3s ease-in-out;
-    margin: 20px auto; /* ממקם את האייקון במרכז */
+    margin: 20px auto; 
 }
 
 .reset-icon:hover {
-    color: #2980b9; /* צבע כהה יותר בעת ריחוף */
-    transform: rotate(360deg); /* אנימציה של סיבוב */
+    color: #2980b9;
+    transform: rotate(360deg); 
 }
 
 

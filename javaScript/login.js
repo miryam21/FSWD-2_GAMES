@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // מניעת רענון הדף
+        event.preventDefault();
 
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
 
-        // בדיקה אם המשתמש חסום
+        
         if (isUserBlocked()) {
             alert("ניסית להתחבר יותר מדי פעמים. נסה שוב מאוחר יותר.");
             return;
@@ -23,10 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // איפוס הניסיונות לאחר התחברות מוצלחת
             setCookie("loginAttempts", 0, 1);
 
-            // שמירת שם המשתמש המחובר ב-LocalStorage
             localStorage.setItem("loggedInUser", username);
 
-            // מעבר לעמוד המשחקים
+           
             window.location.href = "gamesPage.html";
         } else {
             handleFailedLoginAttempt();
@@ -34,13 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// פונקציה לטיפול בניסיונות כניסה כושלים
+
 function handleFailedLoginAttempt() {
     let attempts = getCookie("loginAttempts") ? parseInt(getCookie("loginAttempts")) : 0;
     attempts++;
 
     if (attempts >= 3) {
-        setCookie("blockedUser", "true", 5); // חסימה ל-5 דקות
+        setCookie("blockedUser", "true", 5); 
         alert("ניסית להתחבר יותר מדי פעמים. נסה שוב בעוד 5 דקות.");
     } else {
         setCookie("loginAttempts", attempts, 1); // שמירת מספר הניסיונות
@@ -48,7 +47,7 @@ function handleFailedLoginAttempt() {
     }
 }
 
-// פונקציה לבדוק אם המשתמש חסום
+
 function isUserBlocked() {
     return getCookie("blockedUser") === "true";
 }

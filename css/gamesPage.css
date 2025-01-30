@@ -1,24 +1,23 @@
-/* עיצוב עמוד משחקים ראשי*/
 .games-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, auto)); /* התאמה דינמית */
-    gap: 60px; /* מרווחים קטנים יותר */
+    grid-template-columns: repeat(auto-fit, minmax(150px, auto)); 
+    gap: 60px; 
     justify-content: center;
     padding: 20px;
-    max-width: 800px; /* מונע מהגריד להתפרס על כל הרוחב */
+    max-width: 800px;
     margin: 0 auto;
 }
 
 .game {
-    width: 200px; /* מגדיל את הרוחב */
-    height: 220px; /* מגדיל את הגובה */
+    width: 200px; 
+    height: 220px; 
     border: 2px solid #2c3e50;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: white;
-    font-size: 1rem; /* משאיר את הטקסט ברור */
+    font-size: 1rem; 
     font-weight: bold;
     border-radius: 10px;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
@@ -42,11 +41,11 @@
 
 .game.disabled{
     position: relative;
-    background-color: #ccc; /* רקע אפור */
+    background-color: #ccc; 
     color: gray;
-    pointer-events: none; /* מבטל אפשרות ללחוץ */
+    pointer-events: none; 
     box-shadow: none;
-    cursor: default; /* מסיר את סמן היד */
+    cursor: default; 
 
 }
 .soon {
@@ -55,8 +54,8 @@
     left: 50%;
     width: 180px;
     height: 30px;
-    transform: translate(-50%, -50%); /* ממקם את הכיתוב במרכז */
-    background: rgba(0, 0, 0, 0.6); /* רקע שחור שקוף */
+    transform: translate(-50%, -50%); 
+    background: rgba(0, 0, 0, 0.6); 
     color: white;
     font-size: 1.2rem;
     font-weight: bold;
@@ -67,14 +66,14 @@
     align-items: center;
     justify-content: center;
     font-size: 2rem;
-    gap: 30px; /* רווח בין הכותרת לאייקון */
+    gap: 30px; 
 }
 
 .header-container {
     display: flex;
-    align-items: center; /* מיישר את כל האלמנטים לאותו קו אופקי */
-    justify-content: center; /* ממקם הכל באמצע */
-    gap: 20px; /* רווח בין הכיתוב, הכותרת והגביע */
+    align-items: center; 
+    justify-content: center; 
+    gap: 20px; 
     font-size: 1.5rem;
     font-weight: bold;
     color: #2c3e50;

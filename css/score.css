@@ -30,45 +30,45 @@ p{
 }
 
 .achievement img {
-    width: 100%; /* התמונה תתאים לרוחב הקוביה */
-    height: 120px; /* גובה קבוע לתמונות */
-    object-fit: cover; /* חיתוך החלקים הלא מתאימים כדי לשמור על יחס הגובה-רוחב */
-    border-radius: 10px; /* עיגול קל של התמונה */
+    width: 100%;
+    height: 120px;
+    object-fit: cover; 
+    border-radius: 10px; 
     margin-bottom: 10px; /
     
 
 }
 .table-container {
     display: flex;
-    justify-content: center; /* שומר על יישור למרכז */
+    justify-content: center; 
     width: 100%;
     margin-top: 20px;
 }
 
 table {
-    width: 100%; /* הטבלה תתפוס את כל רוחב המסך */
-    border-collapse: collapse; /* מסיר רווחים בין התאים */
+    width: 100%; 
+    border-collapse: collapse;
     background: white;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    overflow: hidden; /* שומר על קצוות מעוגלים */
+    overflow: hidden;
 }
 
 th, td {
-    border: 1px solid #ddd; /* מוסיף גבול דק בין התאים */
+    border: 1px solid #ddd;
     padding: 10px;
-    text-align: center; /* מיישר את הטקסט */
+    text-align: center;
 }
 
 th {
-    background: #f8f8f8; /* צבע רקע לכותרות */
+    background: #f8f8f8; 
     font-weight: bold;
 }
 
 
 .back-button {
     display: block;
-    margin: 50px auto 20px auto; /* מגדיל את הרווח העליון */
+    margin: 50px auto 20px auto; 
     padding: 10px 20px;
     background: #3498db;
     color: white;

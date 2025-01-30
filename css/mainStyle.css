@@ -12,11 +12,11 @@ body{
     text-align: center;
     padding: 20px;
     height: 100%;
-    background-image: url("../images/space.jpg"); /* הנתיב לתמונה */
-    background-size: cover; /* התאמה למסך */
-    background-position: center; /* מיקום במרכז */
-    background-attachment: fixed; /* קיבוע הרקע */
-    background-repeat: no-repeat; /* ללא חזרה */
+    background-image: url("../images/space.jpg"); 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed; 
+    background-repeat: no-repeat; 
 
 }
 

@@ -1,12 +1,12 @@
 // פונקציה לטיפול ברישום משתמשים
 function registerUser(event) {
-    // שליפת הערכים שהוזנו בטופס
-    const username = document.getElementById("username").value; // שם משתמש
-    const email = document.getElementById("email").value; // אימייל
-    const password = document.getElementById("password").value; // סיסמה
-    const confirmPassword = document.getElementById("confirmPassword").value; // אישור סיסמה
+    // שליפת הערכים שהוזנו
+    const username = document.getElementById("username").value; 
+    const email = document.getElementById("email").value; 
+    const password = document.getElementById("password").value; 
+    const confirmPassword = document.getElementById("confirmPassword").value; 
 
-    // בדיקה אם הסיסמאות תואמות
+   
     if (password !== confirmPassword) {
         alert("הסיסמאות אינן תואמות. אנא נסה שוב.");
         return; // עצירת ביצוע הפונקציה אם הסיסמאות לא תואמות
@@ -16,7 +16,7 @@ function registerUser(event) {
     const existingUsersStr = localStorage.getItem("users");
     const existingUsers = existingUsersStr ? JSON.parse(existingUsersStr) : [];
 
-    // בדיקה אם שם המשתמש כבר קיים
+ 
     if (existingUsers.some(user => user.username === username)) {
         alert("שם המשתמש כבר תפוס. אנא בחר שם אחר.");
         return;
@@ -26,7 +26,7 @@ function registerUser(event) {
     const user = {
         username: username,
         email: email,
-        password: password, // הערה: בעולם אמיתי יש לשמור סיסמאות בפורמט מוצפן (hash)
+        password: password,
         maxScoreBaloon: 0,
         maxScoreXO: 0
     };
@@ -35,14 +35,13 @@ function registerUser(event) {
     // שמירת נתוני המשתמש ב-Local Storage
     saveUserToLocalStorage(user);
 
-    // הצגת הודעת הצלחה וניווט לעמוד ההתחברות
     alert("הרישום בוצע בהצלחה! כעת תוכל להתחבר.");
-    window.location.href = "login.html"; // מעבר לעמוד ההתחברות
+    window.location.href = "login.html";
 }
 
-// פונקציה לשמירת נתוני משתמש ב-Local Storage
+
 function saveUserToLocalStorage(user) {
-    // שליפת משתמשים קיימים מהאחסון המקומי
+    
     const existingUsersStr = localStorage.getItem("users");
     const existingUsers = existingUsersStr ? JSON.parse(existingUsersStr) : [];
     

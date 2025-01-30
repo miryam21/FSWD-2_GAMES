@@ -4,23 +4,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const loggedInUser = localStorage.getItem('loggedInUser')
     
     
-    const gameOverPopup = document.createElement('div'); // יצירת אלמנט פופאפ לסיום המשחק
-    const highScoreElement = document.getElementById('highScore'); // תצוגת שיא אישי
+    const gameOverPopup = document.createElement('div'); 
+    const highScoreElement = document.getElementById('highScore'); 
     let score = 0;
-    let highScore = 0; // ברירת מחדל אם אין שיא אישי
+    let highScore = 0; 
 
-    let gameStarted = false; // משתנה לבדיקה אם המשחק התחיל
-    let gameOver = false; // משתנה לבדיקה אם המשחק נגמר
-    let balloonSpeed = 20; // מהירות התחלתית
-    let balloonInterval = 1000; // תדירות התחלתית
+    let gameStarted = false; 
+    let gameOver = false; 
+    let balloonSpeed = 20; 
+    let balloonInterval = 1000; 
     let addBalloonInterval; // מזהה של ה-setInterval להוספת בלונים
 
-    // יצירת פופאפ מותאם לסיום המשחק
+   
     gameOverPopup.id = 'game-over-popup';
-    gameOverPopup.classList.add('popup'); // שימוש במחלקה מה-CSS
+    gameOverPopup.classList.add('popup'); 
 
     const popupContent = document.createElement('div');
-    popupContent.classList.add('popup-content'); // שימוש במחלקה מה-CSS
+    popupContent.classList.add('popup-content'); 
     popupContent.innerHTML = `
         <h1>GAME OVER</h1>
         <p>Your score: <span id="final-score">0</span></p>
@@ -29,17 +29,17 @@ document.addEventListener('DOMContentLoaded', () => {
     gameOverPopup.appendChild(popupContent);
     document.body.appendChild(gameOverPopup);
 
-    // פונקציה להוסיף בלון למסך
+  
     function addBalloon() {
-        if (gameOver) return; // אם המשחק נגמר, לא להוסיף בלונים
+        if (gameOver) return; 
 
         const balloon = document.createElement('div');
-        balloon.classList.add('balloon'); // שימוש במחלקה מה-CSS
-        balloon.style.left = `${Math.random() * 90}%`; // מיקום אופקי רנדומלי
-        balloon.style.bottom = '0px'; // מתחיל למטה
+        balloon.classList.add('balloon');
+        balloon.style.left = `${Math.random() * 90}%`; 
+        balloon.style.bottom = '0px'; 
         balloonArea.appendChild(balloon);
 
-        // תנועה כלפי מעלה
+       
         let position = 0;
         const moveUp = setInterval(() => {
             if (gameOver) {
@@ -61,15 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // קליק על הבלון
         balloon.addEventListener('click', () => {
-            if (gameOver) return; // מניעת פיצוץ לאחר סיום המשחק
+            if (gameOver) return; // 
 
             clearInterval(moveUp); // עצירת התנועה
-            balloon.classList.add('exploding-balloon'); // שימוש במחלקה לפיצוץ
+            balloon.classList.add('exploding-balloon'); 
             setTimeout(() => {
-                balloon.remove(); // הסרה אחרי האפקט
-            }, 300); // זמן מתאים לאנימציה
-            score += 10; // עדכון ניקוד
-            updateScore(); // עדכון הניקוד על המסך
+                balloon.remove();
+            }, 300); 
+            score += 10; 
+            updateScore(); 
 
             // בדיקה להעלאת רמת קושי
             if (score % 100 === 0) {
@@ -78,11 +78,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
- // פונקציה לעדכון הניקוד ושמירת שיא אישי
+
 function updateScore() {
     scoreElement.textContent = score;
 
-    // אם השחקן שבר שיא אישי
+    //אם השחקן שבר שיא 
     if (score > highScore) {
         highScore = score;
         highScoreElement.textContent = highScore;
@@ -100,12 +100,11 @@ function saveHighScore(highScore) {
     
 }
 
-    // פונקציה לסיום המשחק
     function endGame() {
-        gameOver = true; // עדכון מצב המשחק
+        gameOver = true; 
         document.getElementById('final-score').textContent = score; // עדכון הניקוד בפופאפ
         gameOverPopup.style.display = 'flex'; // הצגת הפופאפ
-    // שמירת שיא אישי אם השחקן עבר את הקודם
+    // שמירת שיא אם השחקן עבר את הקודם
      if (score > highScore) {
         highScore = score;
         saveHighScore(highScore);
@@ -114,13 +113,13 @@ function saveHighScore(highScore) {
         // האזנה ללחיצה על כפתור Restart
         const restartButton = document.getElementById('restart-button');
         restartButton.addEventListener('click', () => {
-            location.reload(); // רענון המשחק
+            location.reload();
         });
     }
 
-    // פונקציה להעלאת רמת קושי
+   
     function increaseDifficulty() {
-        if (balloonSpeed > 5) balloonSpeed -= 2; // הפחתת זמן האנימציה (מהירות עולה)
+        if (balloonSpeed > 5) balloonSpeed -= 2; 
         if (balloonInterval > 300) balloonInterval -= 100; // הפחתת זמן בין הבלונים
 
         clearInterval(addBalloonInterval); // עצירת ה-Interval הנוכחי
@@ -129,7 +128,7 @@ function saveHighScore(highScore) {
 
     // התחלת המשחק אחרי השהיה
     setTimeout(() => {
-        gameStarted = true; // מסמן שהמשחק התחיל
+        gameStarted = true; 
         addBalloonInterval = setInterval(addBalloon, balloonInterval); // הוספת בלונים כל שנייה
-    }, 1000); // התחלה אחרי 1 שניות
+    }, 1000);
 });

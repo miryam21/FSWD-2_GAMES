@@ -1,7 +1,7 @@
-/* עיצוב כללי לעמוד */
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f8ff; /* רקע בצבע עדין */
+    background-color: #f0f8ff; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,7 +9,7 @@ body {
     margin: 0;
 }
 
-/* עיצוב הטופס */
+
 form {
     background-color: white;
     padding: 20px;
@@ -21,7 +21,7 @@ form {
     align-items: center;
 }
 
-/* עיצוב התוויות */
+
 label {
     font-size: 14px;
     font-weight: bold;
@@ -29,7 +29,7 @@ label {
     direction: rtl;
 }
 
-/* עיצוב שדות הקלט */
+
 input {
     width: 100%;
     padding: 8px;
@@ -38,7 +38,7 @@ input {
     border-radius: 5px;
 }
 
-/* עיצוב כפתור ההרשמה */
+
 button {
     margin-top: 15px;
     padding: 10px;
